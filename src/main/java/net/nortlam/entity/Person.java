@@ -20,11 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity(name="Person") @Table(name = "PERSON")
 @NamedQueries({
-   @NamedQuery(name=Person.FIND_BY_ID, query="SELECT person FROM Person person WHERE person.ID = :ID")  
+   @NamedQuery(name=Person.FIND_ALL, query="SELECT person FROM Person person ORDER BY person.name"),
+   @NamedQuery(name=Person.FIND_BY_ID, query="SELECT person FROM Person person WHERE person.ID = :ID")
 })
 public class Person implements Serializable {
     
     public static final String FIND_BY_ID = "Person.findByID";
+    public static final String FIND_ALL = "Person.findAll";
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PERSON_ID", nullable = false, columnDefinition = "INT", unique = false, insertable = true)

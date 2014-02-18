@@ -1,5 +1,6 @@
 package net.nortlam.rest;
 
+import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,5 +26,11 @@ public class PersonResource {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Person findByID(@PathParam("ID")int ID) {
         return entityManager.find(Person.class, ID);
+    }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Collection<Person> findAll() {
+        return (Collection<Person>)entityManager.createNamedQuery(Person.FIND_ALL).getResultList();
     }
 }
