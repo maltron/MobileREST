@@ -1,0 +1,4 @@
+net/nortlam/entity/Person_.class
+net/nortlam/rest/config/RESTEnabler.class
+net/nortlam/rest/PersonResource.class
+net/nortlam/entity/Person.class
